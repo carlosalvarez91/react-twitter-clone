@@ -1,11 +1,5 @@
 import React from 'react'
 import {render} from 'react-dom'
+import App from './components/App'
 
-class Test extends React.Component{
-    render(){
-        return(
-            <h1>Twitter Clone with React</h1>
-        )
-    }
-}
-render(<Test />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))
