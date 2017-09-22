@@ -18,6 +18,7 @@ class Main extends Component{
                 date: Date.now()
             },
             {
+                id: uuid.v4(),
                 text: 'Tweet test 2',
                 picture:'',
                 displayName:'Carlos',
@@ -28,10 +29,10 @@ class Main extends Component{
     }
     handleOpenText(event){
         event.preventDefault()
-        this.setState({ opentext: true})
+        this.setState({ onOpenText: true})
     }
     renderOpenText(){
-        if(this.state.openText){
+        if(this.state.onOpenText){
             return <InputText />
         }
     }
@@ -41,7 +42,7 @@ class Main extends Component{
                 <ProfileBar
                     picture={this.props.user.photoURL}
                     username={this.props.user.email.split('@')[0]}
-                    onOpenText={this.handleOpenText}
+                    onOpenText={this.handleOpenText.bind(this)} // bind: to avoid confusion about what 'this' is using
                 />
                {this.renderOpenText()}
                 <MessageList messages={this.state.messages}/>
