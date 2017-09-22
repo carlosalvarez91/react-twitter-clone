@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import 'normalize-css'
+import styles from './app.css'
 import Header from '../Header'
 import Main from '../Main'
 
