@@ -5,11 +5,22 @@ import Header from '../Header'
 import Main from '../Main'
 
 class App extends Component{
+    constructor(){
+        super()
+        this.state = {
+            user:{
+                photoURL: '',
+                email: 'test@test',
+                onOpenText: false
+
+            }
+        }
+    }
     render(){
         return(
             <div>
                 <Header />
-                <Main />
+                <Main user={this.state.user}/>
             </div>
         )
     }
