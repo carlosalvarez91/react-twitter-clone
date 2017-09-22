@@ -15,7 +15,9 @@ class Main extends Component{
                 picture:'',
                 displayName:'Carlos',
                 username:'carlosalvarez',
-                date: Date.now()
+                date: Date.now(),
+                retweets: 0,
+                favourites:2
             },
             {
                 id: uuid.v4(),
@@ -23,7 +25,10 @@ class Main extends Component{
                 picture:'',
                 displayName:'Carlos',
                 username:'carlosalvarez',
-                date: Date.now()
+                date: Date.now(),
+                retweets: 3,
+                favourites: 0
+
             }]
         }
 

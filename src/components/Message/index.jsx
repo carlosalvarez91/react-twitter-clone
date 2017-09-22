@@ -25,9 +25,11 @@ class Message extends Component{
                     </div>
                     <div className={styles.icon}>
                         <span className='fa fa-retweet'></span>
+                        <span className={styles.num}>{this.props.numRetweets}</span>
                     </div>
                     <div className={styles.icon}>
                         <span className='fa fa-star'></span>
+                        <span className={styles.num}>{this.props.numFavourites}</span>
                     </div>
                 </div>
             </div>

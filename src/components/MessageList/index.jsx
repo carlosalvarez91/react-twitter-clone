@@ -18,6 +18,8 @@ class MessageList extends Component{
                             displayName={msg.displayName}
                             username={msg.username}
                             date={msg.date} 
+                            numRetweets={msg.retweets}
+                            numFavourites={msg.favorites}
                             />
                     )
                 }).reverse()}
