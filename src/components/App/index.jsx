@@ -11,7 +11,8 @@ class App extends Component{
             user:{
                 photoURL: '',
                 email: 'test@test',
-                onOpenText: false
+                onOpenText: false,
+                displayName: 'Carlos'
 
             }
         }
