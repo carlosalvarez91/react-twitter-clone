@@ -5,9 +5,10 @@ import InputText from '../InputText'
 import ProfileBar from '../ProfileBar'
 
 class Main extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
+            user: Object.assign({}, this.props.user, {retweets: []}, { favourites: []}),
             openText: false,
             messages: [{
                 id: uuid.v4(), // random key number
@@ -32,10 +33,12 @@ class Main extends Component{
             }]
         }
 
-        // bind: to avoid confusion about what 'this' is using
+        // .bind(): to avoid confusion about what 'this' is using
         this.handleSendText = this.handleSendText.bind(this);
         this.handleCloseText = this.handleCloseText.bind(this);
         this.handleOpenText = this.handleOpenText.bind(this);
+        this.handleRetweet = this.handleRetweet.bind(this);
+        this.handleFavourite = this.handleFavourite.bind(this);
     }
 
     handleSendText(event){
@@ -61,6 +64,42 @@ class Main extends Component{
         event.preventDefault()
         this.setState({ onOpenText: true})
     }
+    handleRetweet(msgId){
+        let alreadyRetweeted = this.state.user.retweets.filter(rt => rt === msgId)
+        if(alreadyRetweeted.length === 0){
+            let messages = this.state.messages.map(msg =>{
+                if(msg.id === msgId){
+                    msg.retweets++
+                }
+                return msg
+            })
+            let user = Object.assign({}, this.state.user)
+            user.retweets.push(msgId)
+            this.setState({
+                messages,
+                user
+            })
+        }
+
+    }
+    handleFavourite(msgId){
+        let alreadyFavourited = this.state.user.favourites.filter(fav => fav === msgId)
+        if(alreadyFavourited.length === 0){
+            let messages = this.state.messages.map(msg =>{
+                if(msg.id === msgId){
+                    msg.favourites++
+                }
+                return msg
+            })
+            let user = Object.assign({}, this.state.user)
+            user.favourites.push(msgId)
+
+            this.setState({
+                messages,
+                user
+            })
+        }
+    }
     renderOpenText(){
         if(this.state.onOpenText){
             return (
@@ -80,7 +119,11 @@ class Main extends Component{
                     onOpenText={this.handleOpenText}
                 />
                {this.renderOpenText()}
-                <MessageList messages={this.state.messages}/>
+                <MessageList 
+                    messages={this.state.messages}
+                    onRetweet={this.handleRetweet}
+                    onFavourite={this.handleFavourite}
+                />
             </div>
         )
     }
