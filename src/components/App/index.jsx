@@ -5,20 +5,19 @@ import styles from './app.css'
 import Header from '../Header'
 import Main from '../Main'
 import Profile from '../Profile'
+import Login from '../Login'
 
 class App extends Component{
     constructor(){
         super()
         this.state = {
-            user:{
-                photoURL: '',
-                email: 'test@test',
-                onOpenText: false,
-                displayName: 'Carlos',
-                location: 'Dublin, Ireland'
-
-            }
+            user:null
         }
+        this.handleOnauth = this.handleOnauth.bind(this)
+    }
+
+    handleOnauth(){
+        console.log('Auth')
     }
     render(){
         return(
@@ -32,6 +31,9 @@ class App extends Component{
                             )
                         }else{
                             // Render login
+                            return(
+                                <Login onAuth={this.handleOnauth} />
+                            )
                         }
                     }}/>
 
