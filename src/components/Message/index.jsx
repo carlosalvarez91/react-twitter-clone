@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import styles from './message.css'
 import moment from 'moment'
 
@@ -29,9 +30,11 @@ class Message extends Component{
         return(
             <div className={styles.root}>
                 <div className={styles.user}>
-                    <figure>
-                        <img className={styles.avatar} src={this.props.picture} />
-                    </figure>
+                    <Link to={`/user/${this.props.username}`}>
+                        <figure>
+                            <img className={styles.avatar} src={this.props.picture} />
+                        </figure>
+                    </Link>
                     <span className={styles.displayName}>{this.props.displayName}</span>
                     <span className={styles.userName}>{this.props.username}</span>
                     <span className={styles.date}>{dateFormat}</span>
