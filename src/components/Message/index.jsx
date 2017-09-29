@@ -38,10 +38,7 @@ class Message extends Component{
                 </div>
                 <h3>{this.props.text}</h3>
                 <div className={styles.buttons}>
-                    <div 
-                        className={styles.icon}
-                        onClick={this.props.onReplyTweet}
-                        >
+                    <div className={styles.icon}>
                         <span className='fa fa-reply'></span>
                     </div>
                     <div 

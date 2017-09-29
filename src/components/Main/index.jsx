@@ -8,7 +8,6 @@ class Main extends Component{
     constructor(props){
         super(props)
         this.state = {
-            userNameToReply: '',
             user: Object.assign({}, this.props.user, {retweets: []}, { favourites: []}),
             openText: false,
             messages: [{
@@ -40,8 +39,6 @@ class Main extends Component{
         this.handleOpenText = this.handleOpenText.bind(this);
         this.handleRetweet = this.handleRetweet.bind(this);
         this.handleFavourite = this.handleFavourite.bind(this);
-        this.handleReplyTweet = this.handleReplyTweet.bind(this);
-        
     }
 
     handleSendText(event){
@@ -79,7 +76,7 @@ class Main extends Component{
             let user = Object.assign({}, this.state.user)
             user.retweets.push(msgId)
             this.setState({
-                messages, // in ES6 when the key and the value are called the same we can just write the key
+                messages,
                 user
             })
         }
@@ -103,21 +100,12 @@ class Main extends Component{
             })
         }
     }
-    handleReplyTweet(msgId, userNameToReply){
-        this.setState({
-            onOpenText: true,
-            userNameToReply
-
-        })
-
-    }
     renderOpenText(){
         if(this.state.onOpenText){
             return (
                 <InputText
                 onSendText={this.handleSendText}
                 onCloseText={this.handleCloseText}
-                userNameToReply={this.state.userNameToReply}
                  />
             )
         }
@@ -135,7 +123,6 @@ class Main extends Component{
                     messages={this.state.messages}
                     onRetweet={this.handleRetweet}
                     onFavourite={this.handleFavourite}
-                    onReplyTweet={this.handleReplyTweet}
                 />
             </div>
         )
