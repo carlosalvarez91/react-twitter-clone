@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from './header.css'
 
-class Header extends Component {
-    render(){
+// This is a Stateless Component, so we don't need to use a react component
+function Header() {
         return(
             <header className={styles.root}>
                 <h1 className={styles.logo}>
@@ -10,6 +10,5 @@ class Header extends Component {
                 </h1>
             </header>
         )
-    }
 }
 export default Header
