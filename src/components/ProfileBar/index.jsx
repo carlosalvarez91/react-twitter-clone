@@ -9,7 +9,7 @@ const propTypes = {
     onOpenText: PropTypes.func.isRequired
 }
 
-function ProfileBar ({ picture, username, onOpenText }){
+function ProfileBar ({ picture, username, onOpenText, onLogout }){
         return(
             <div className={styles.root}>
                 <Link to='/profile'>
@@ -20,6 +20,9 @@ function ProfileBar ({ picture, username, onOpenText }){
                 <span className={styles.username}>Hello @{username}!</span>
                 <button onClick={onOpenText} className={styles.button}>
                     <span className="fa fa-lg fa-edit"></span> Tweet!
+                </button>
+                <button onClick={onLogout} className={styles.button}>
+                    <span className='fa fa-sign-out'></span> Log out
                 </button>
             </div>
         )

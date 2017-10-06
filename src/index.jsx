@@ -1,6 +1,5 @@
 import React from 'react'
 import {render} from 'react-dom'
-import App from './components/App'
 import firebase from 'firebase'
 
 firebase.initializeApp({
@@ -11,5 +10,7 @@ firebase.initializeApp({
     storageBucket: '',
     messagingSenderId: '47981543161'
 });
+
+import App from './components/App'
 
 render(<App />, document.getElementById('root'))

@@ -11,13 +11,13 @@ function Login ({ onAuth }){
         return(
             <div className={styles.root}>
                 <p className={styles.text}>
-                    Log in with Facebook or Github to continue
+                    Log in with Facebook to continue
                 </p>
                 <button 
                     onClick={onAuth}
                     className={styles.button}
                 >
-                 <span className='fa fa-github'></span>  Login with Github
+                 <span className='fa fa-facebook'></span>  Login with Facebook
                 </button>
             </div>
         )

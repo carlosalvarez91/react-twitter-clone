@@ -6,23 +6,40 @@ import Header from '../Header'
 import Main from '../Main'
 import Profile from '../Profile'
 import Login from '../Login'
+import firebase from 'firebase';
+
 
 class App extends Component{
     constructor(){
         super()
         this.state = {
-            user:{
-                username: 'Test',
-                email: 'test@test.com',
-                photoURL:''
-            }
+            user:null
         }
         this.handleOnauth = this.handleOnauth.bind(this)
     }
-
+    componentWillMount () {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            this.setState({ user })
+            console.log(user)
+          } else {
+            this.setState({ user: null })
+          }
+        })
+      }
     handleOnauth(){
         console.log('Auth')
+        const provider = new firebase.auth.FacebookAuthProvider()
+
+        firebase.auth().signInWithPopup(provider)
+        .then(result => console.log(`${result.user.email} you have logged in`))
+        .catch(error => console.error(`Error: ${error.code}: ${error.message}`))
     }
+    handleLogout () {
+        firebase.auth().signOut()
+          .then(() => console.log('You have logged out correctly'))
+          .catch(() => console.error('An error happened'))
+      }
     render(){
         return(
             <HashRouter>
@@ -31,7 +48,8 @@ class App extends Component{
                     <Match exactly pattern='/' render={() => {
                         if(this.state.user){
                             return (
-                                <Main user = {this.state.user}/>
+                                <Main user = {this.state.user}
+                                onLogout={this.handleLogout}/>
                             )
                         }else{
                             // Render login
