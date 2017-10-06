@@ -57,7 +57,9 @@ class Main extends Component{
             displayName: this.props.user.displayName,
             picture: this.props.user.photoURL,
             date: Date.now(),
-            text: event.target.text.value
+            text: event.target.text.value,
+            retweets: '',
+            favourites:''
         }
         this.setState({
             messages: this.state.messages.concat(newMessage),
