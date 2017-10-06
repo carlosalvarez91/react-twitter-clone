@@ -11,7 +11,11 @@ class App extends Component{
     constructor(){
         super()
         this.state = {
-            user:null
+            user:{
+                username: 'Test',
+                email: 'test@test.com',
+                photoURL:''
+            }
         }
         this.handleOnauth = this.handleOnauth.bind(this)
     }
