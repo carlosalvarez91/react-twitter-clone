@@ -10,7 +10,7 @@ module.exports = {
    entry: __dirname + '/src/index.jsx',
     output:{
         filename: 'app.js',
-        path: __dirname + './build',
+        path: __dirname + '/build',
         publicPath: '/'
     },
 
